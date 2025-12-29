@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Lakshmi Printers | Get in Touch for Printing Services in Medchal</title>
+    <meta name="description" content="Contact Lakshmi Printers for all your printing needs in Medchal. Get quotes, place orders, and reach our team via phone, email, or WhatsApp.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-maroon: #7A1F2F;
+            --gold-accent: #F0C419;
+            --ivory-white: #F6F6F6;
+            --carbon-black: #1A1A1A;
+            --cool-grey: #707070;
+            --soft-grey: #DADADA;
+            --soft-cyan: #33A1C9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory-white);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-maroon);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold-accent);
+        }
+        
+        .text-primary {
+            color: var(--primary-maroon);
+        }
+        
+        .text-gold {
+            color: var(--gold-accent);
+        }
+        
+        .text-grey {
+            color: var(--cool-grey);
+        }
+        
+        .border-grey {
+            border-color: var(--soft-grey);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, #5A1824 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-maroon);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6B1A29;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.3);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: var(--primary-maroon);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-gold:hover {
+            background-color: #E6B800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 196, 25, 0.3);
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--primary-maroon);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--gold-accent);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--soft-grey);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-maroon);
+        }
+        
+        .form-input.error {
+            border-color: #E74C3C;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--carbon-black);
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        
+        .working-hours {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, #5A1824 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 24px;
+        }
+        
+        .working-hours .open {
+            color: #27AE60;
+            font-weight: 600;
+        }
+        
+        .working-hours .closed {
+            color: #E74C3C;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="resources/logo.png" alt="Lakshmi Printers Logo" class="h-12 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link text-gold">Contact</a>
+                </nav>
+                
+                <!-- Call Now Button -->
+                <button class="btn-gold" onclick="window.location.href='tel:+919999999999'">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link text-gold">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center fade-in">
+                <h1 class="hero-title font-poppins font-bold text-5xl md:text-6xl mb-6">
+                    Get in Touch
+                </h1>
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    Ready to start your printing project? Contact us today for quotes, consultations, and expert advice. We're here to help bring your vision to life.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-gold" onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Send Message
+                    </button>
+                    <button class="btn-primary" onclick="window.location.href='tel:+919999999999'">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 fade-in">
+                <!-- Phone -->
+                <div class="contact-card text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-2">Phone</h3>
+                    <p class="text-grey mb-3">Call us for immediate assistance</p>
+                    <p class="font-semibold text-primary">+91 99999 99999</p>
+                    <p class="font-semibold text-primary">+91 88888 88888</p>
+                    <button class="btn-primary mt-4 w-full" onclick="window.location.href='tel:+919999999999'">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Now
+                    </button>
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-card text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-2">Email</h3>
+                    <p class="text-grey mb-3">Send us your inquiries</p>
+                    <p class="font-semibold text-primary">info@lakshmiprinters.com</p>
+                    <p class="font-semibold text-primary">orders@lakshmiprinters.com</p>
+                    <button class="btn-primary mt-4 w-full" onclick="window.location.href='mailto:info@lakshmiprinters.com'">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Send Email
+                    </button>
+                </div>
+                
+                <!-- WhatsApp -->
+                <div class="contact-card text-center">
+                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fab fa-whatsapp text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-2">WhatsApp</h3>
+                    <p class="text-grey mb-3">Chat with us instantly</p>
+                    <p class="font-semibold text-primary">+91 99999 99999</p>
+                    <p class="text-grey text-sm">Available 24/7 for queries</p>
+                    <button class="whatsapp-btn mt-4 w-full" onclick="openWhatsApp()">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        Start Chat
+                    </button>
+                </div>
+                
+                <!-- Address -->
+                <div class="contact-card text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-2">Visit Us</h3>
+                    <p class="text-grey mb-3">Come to our shop</p>
+                    <p class="font-semibold text-primary text-sm">12-93, Medchal Check-Post</p>
+                    <p class="font-semibold text-primary text-sm">Kistapur Road, Near NH-44</p>
+                    <p class="font-semibold text-primary text-sm">Medchal, Telangana 501401</p>
+                    <button class="btn-primary mt-4 w-full" onclick="openGoogleMaps()">
+                        <i class="fas fa-map mr-2"></i>
+                        Get Directions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form and Map Section -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <h2 class="font-poppins font-semibold text-4xl text-primary mb-6">
+                        Send Us a Message
+                    </h2>
+                    <p class="text-grey text-lg mb-8">
+                        Fill out the form below and we'll get back to you within 24 hours with a detailed quote and project timeline.
+                    </p>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="company" class="form-label">Company/Organization</label>
+                                <input type="text" id="company" name="company" class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="form-label">Service Required *</label>
+                            <select id="service" name="service" class="form-input" required>
+                                <option value="">Select a service</option>
+                                <option value="business-cards">Business Cards</option>
+                                <option value="brochures">Brochures & Flyers</option>
+                                <option value="custom-tshirts">Custom T-Shirts</option>
+                                <option value="id-cards">ID Cards</option>
+                                <option value="banners">Banners & Posters</option>
+                                <option value="custom-mugs">Custom Mugs</option>
+                                <option value="letterheads">Letterheads</option>
+                                <option value="binding">Binding & Finishing</option>
+                                <option value="other">Other (please specify)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" class="form-input" min="1" placeholder="e.g., 100, 500, 1000">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="form-label">Project Details *</label>
+                            <textarea id="message" name="message" rows="5" class="form-input" required placeholder="Please describe your project requirements, timeline, and any specific details..."></textarea>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="urgent" name="urgent" class="mr-3">
+                            <label for="urgent" class="text-grey">This is an urgent request</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary text-lg px-8 py-4 w-full">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message & Get Quote
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Map and Working Hours -->
+                <div class="fade-in">
+                    <h2 class="font-poppins font-semibold text-4xl text-primary mb-6">
+                        Visit Our Shop
+                    </h2>
+                    <p class="text-grey text-lg mb-8">
+                        Conveniently located in Medchal with easy access and parking facilities. Come see our work and discuss your project in person.
+                    </p>
+                    
+                    <!-- Map -->
+                    <div class="mb-8">
+                        <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.0!2d78.5!3d17.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDMwJzAwLjAiTiA3OMKwMzAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                                width="100%" 
+                                height="300" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div class="flex gap-4 mt-4">
+                            <button class="btn-primary flex-1" onclick="openGoogleMaps()">
+                                <i class="fas fa-map mr-2"></i>
+                                Open in Maps
+                            </button>
+                            <button class="btn-gold flex-1" onclick="getDirections()">
+                                <i class="fas fa-directions mr-2"></i>
+                                Get Directions
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Working Hours -->
+                    <div class="working-hours">
+                        <h3 class="font-poppins font-semibold text-xl mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            Working Hours
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Monday - Saturday</span>
+                                <span class="open">9:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Sunday</span>
+                                <span class="closed">10:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Public Holidays</span>
+                                <span class="closed">10:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/20">
+                            <p class="text-sm">
+                                <span id="current-status" class="font-semibold">Currently Open</span>
+                                • Next: <span id="next-hours">Closes at 8:00 PM</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions Section -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Quick Actions
+                </h2>
+                <p class="text-grey text-lg">
+                    Get started with your printing project right away
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="contact-card text-center fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calculator text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">Get Instant Quote</h3>
+                    <p class="text-grey mb-4">Send us your requirements and get a detailed quote within 2 hours</p>
+                    <button class="btn-primary w-full" onclick="window.location.href='downloads.html'">
+                        <i class="fas fa-download mr-2"></i>
+                        Download Quote Form
+                    </button>
+                </div>
+                
+                <div class="contact-card text-center fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-upload text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">Upload Files</h3>
+                    <p class="text-grey mb-4">Send us your design files for review and printing preparation</p>
+                    <button class="btn-primary w-full" onclick="showNotification('File upload feature coming soon!', 'info')">
+                        <i class="fas fa-cloud-upload-alt mr-2"></i>
+                        Upload Files
+                    </button>
+                </div>
+                
+                <div class="contact-card text-center fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-check text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">Schedule Visit</h3>
+                    <p class="text-grey mb-4">Book a consultation visit to discuss your project in person</p>
+                    <button class="btn-primary w-full" onclick="showNotification('Please call us to schedule a visit!', 'info')">
+                        <i class="fas fa-calendar-plus mr-2"></i>
+                        Book Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-grey text-lg">
+                    Quick answers to common questions about our services
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg card-shadow p-6 fade-in">
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">
+                        <i class="fas fa-question-circle text-gold mr-2"></i>
+                        What is your typical turnaround time?
+                    </h3>
+                    <p class="text-grey">
+                        Turnaround times vary by service: Business cards (same day), Brochures (2-3 days), Custom t-shirts (3-5 days), Large orders (5-7 days). Rush orders available for urgent requests.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg card-shadow p-6 fade-in">
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">
+                        <i class="fas fa-question-circle text-gold mr-2"></i>
+                        Do you offer design services?
+                    </h3>
+                    <p class="text-grey">
+                        Yes! Our experienced design team can help create professional designs for your printing projects. We offer basic design assistance as well as complete design services.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg card-shadow p-6 fade-in">
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">
+                        <i class="fas fa-question-circle text-gold mr-2"></i>
+                        What file formats do you accept?
+                    </h3>
+                    <p class="text-grey">
+                        We accept PDF, AI, PSD, CDR, JPG, PNG, and TIFF files. For best results, we recommend PDF files with 300 DPI resolution and CMYK color mode.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg card-shadow p-6 fade-in">
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">
+                        <i class="fas fa-question-circle text-gold mr-2"></i>
+                        Do you offer bulk discounts?
+                    </h3>
+                    <p class="text-grey">
+                        Yes, we offer competitive pricing and bulk discounts for large orders. Contact us with your quantity requirements for a custom quote.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg card-shadow p-6 fade-in">
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">
+                        <i class="fas fa-question-circle text-gold mr-2"></i>
+                        Can I see a sample before placing a large order?
+                    </h3>
+                    <p class="text-grey">
+                        Absolutely! We can provide samples of your design before proceeding with the full order. This ensures you're completely satisfied with the quality and design.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="fade-in">
+                    <img src="resources/logo.png" alt="Lakshmi Printers" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">
+                        Premium printing solutions for businesses and individuals in Medchal. Quality, reliability, and excellence in every print.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Business Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Brochures</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Custom T-Shirts</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">ID Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Digital Printing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gold mt-1 mr-3"></i>
+                            <p class="text-gray-300 text-sm">12-93, Medchal Check-Post, Kistapur Road, Near NH-44, Medchal, Telangana 501401</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">+91 99999 99999</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">info@lakshmiprinters.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Lakshmi Printers. All rights reserved. | 
+                    <span class="text-gold">Designed with ❤️ for quality printing</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Contact form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            // Update current status
+            updateCurrentStatus();
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (validateContactForm()) {
+                    // Simulate form submission
+                    showNotification('Sending your message...', 'info');
+                    
+                    setTimeout(() => {
+                        showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+                        contactForm.reset();
+                    }, 2000);
+                }
+            });
+            
+            // Real-time validation
+            const inputs = contactForm.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+            });
+        });
+        
+        function validateContactForm() {
+            const form = document.getElementById('contact-form');
+            let isValid = true;
+            
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+        
+        function validateField(field) {
+            const value = field.value.trim();
+            const type = field.type;
+            let isValid = true;
+            
+            // Remove existing error styling
+            field.classList.remove('error');
+            
+            // Required field check
+            if (field.hasAttribute('required') && !value) {
+                isValid = false;
+            }
+            
+            // Email validation
+            if (type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    isValid = false;
+                }
+            }
+            
+            // Phone validation
+            if (type === 'tel' && value) {
+                const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                if (!phoneRegex.test(value.replace(/\s/g, ''))) {
+                    isValid = false;
+                }
+            }
+            
+            // Apply error styling
+            if (!isValid) {
+                field.classList.add('error');
+            }
+            
+            return isValid;
+        }
+        
+        function updateCurrentStatus() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentDay = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            
+            const statusElement = document.getElementById('current-status');
+            const nextHoursElement = document.getElementById('next-hours');
+            
+            let isOpen = false;
+            let nextAction = '';
+            
+            if (currentDay === 0) { // Sunday
+                if (currentHour >= 10 && currentHour < 18) {
+                    isOpen = true;
+                    nextAction = 'Closes at 6:00 PM';
+                } else if (currentHour < 10) {
+                    nextAction = 'Opens at 10:00 AM';
+                } else {
+                    nextAction = 'Closed - Opens Monday 9:00 AM';
+                }
+            } else { // Monday - Saturday
+                if (currentHour >= 9 && currentHour < 20) {
+                    isOpen = true;
+                    nextAction = 'Closes at 8:00 PM';
+                } else if (currentHour < 9) {
+                    nextAction = 'Opens at 9:00 AM';
+                } else {
+                    if (currentDay === 6) { // Saturday
+                        nextAction = 'Closed - Opens Sunday 10:00 AM';
+                    } else {
+                        nextAction = 'Closed - Opens tomorrow 9:00 AM';
+                    }
+                }
+            }
+            
+            statusElement.textContent = isOpen ? 'Currently Open' : 'Currently Closed';
+            statusElement.className = isOpen ? 'font-semibold open' : 'font-semibold closed';
+            nextHoursElement.textContent = nextAction;
+        }
+        
+        // Update status every minute
+        setInterval(updateCurrentStatus, 60000);
+    </script>
+</body>
+</html>

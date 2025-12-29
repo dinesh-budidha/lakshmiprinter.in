@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshmi Printers</title>
+    <meta name="description" content="Lakshmi Printers offers comprehensive DTP, designing, and printing services in Medchal. Professional business printing, custom merchandise, and high-quality digital prints.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-maroon: #7A1F2F;
+            --gold-accent: #F0C419;
+            --ivory-white: #F6F6F6;
+            --carbon-black: #1A1A1A;
+            --cool-grey: #707070;
+            --soft-grey: #DADADA;
+            --soft-cyan: #33A1C9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory-white);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-maroon);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold-accent);
+        }
+        
+        .text-primary {
+            color: var(--primary-maroon);
+        }
+        
+        .text-gold {
+            color: var(--gold-accent);
+        }
+        
+        .text-grey {
+            color: var(--cool-grey);
+        }
+        
+        .border-grey {
+            border-color: var(--soft-grey);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, #5A1824 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-maroon);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6B1A29;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.3);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: var(--primary-maroon);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-gold:hover {
+            background-color: #E6B800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 196, 25, 0.3);
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--primary-maroon);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--gold-accent);
+        }
+        
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            color: var(--gold-accent);
+            margin-bottom: 16px;
+        }
+        
+        .gallery-image {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(122, 31, 47, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .gallery-image:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+            border-left: 4px solid var(--gold-accent);
+        }
+        
+        .star-rating {
+            color: var(--gold-accent);
+            font-size: 18px;
+        }
+        
+        .download-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 31, 47, 0.15);
+        }
+        
+        .pdf-icon {
+            color: #E74C3C;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="resources/logo.png" alt="Lakshmi Printers Logo" class="h-12 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- Call Now Button -->
+                <button class="btn-gold" onclick="window.location.href='tel:+919999999999'">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center text-white relative overflow-hidden" style="padding-top: 80px;">
+        <div class="absolute inset-0 opacity-20">
+            <img src="resources/hero-bg.jpg" alt="Printing Shop Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <h1 class="hero-title font-poppins font-bold text-5xl md:text-6xl mb-6 fade-in">
+                Premium Designing & Printing Solutions in Medchal
+            </h1>
+            
+            <p class="hero-subtitle text-xl md:text-2xl mb-8 text-gray-200 fade-in">
+                All-in-one printing shop for business essentials, merchandise & custom designs.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+                <button class="btn-primary text-lg px-8 py-4" onclick="window.location.href='contact.html'">
+                    <i class="fas fa-quote-left mr-2"></i>
+                    Get a Quote
+                </button>
+                <button class="btn-gold text-lg px-8 py-4" onclick="window.location.href='tel:+919999999999'">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="font-poppins font-semibold text-4xl text-primary mb-6">
+                        About Lakshmi Printers
+                    </h2>
+                    <p class="text-grey text-lg mb-6">
+                        Lakshmi Printers offers comprehensive DTP, designing, and printing services in Medchal. We specialize in professional business printing, custom merchandise, and high-quality digital prints. With reliable service and modern printing technology, we bring your ideas to life with perfection.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gold text-xl mr-3"></i>
+                            <span class="font-medium">Fast & reliable service</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-gold text-xl mr-3"></i>
+                            <span class="font-medium">High-quality prints</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-palette text-gold text-xl mr-3"></i>
+                            <span class="font-medium">Custom designs</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-rupee-sign text-gold text-xl mr-3"></i>
+                            <span class="font-medium">Affordable pricing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <img src="resources/shop-interior.jpeg" alt="Lakshmi Printers Shop Interior" class="w-full rounded-lg card-shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview Section -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Our Services
+                </h2>
+                <p class="text-grey text-lg">
+                    Comprehensive printing solutions for all your business needs
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Visiting Cards -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-id-card service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Visiting Cards</h3>
+                    <p class="text-grey text-sm">Professional business cards with premium finishes</p>
+                </div>
+                
+                <!-- Letterheads -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-file-alt service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Letterheads</h3>
+                    <p class="text-grey text-sm">Custom letterheads for professional correspondence</p>
+                </div>
+                
+                <!-- ID Cards -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-id-card service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">ID Cards</h3>
+                    <p class="text-grey text-sm">Employee and student ID cards with security features</p>
+                </div>
+                
+                <!-- Bill Books -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-book service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Bill Books</h3>
+                    <p class="text-grey text-sm">Customized invoice and receipt books</p>
+                </div>
+                
+                <!-- Stamps -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-stamp service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Stamps</h3>
+                    <p class="text-grey text-sm">Personalized rubber stamps and seals</p>
+                </div>
+                
+                <!-- Leaflets & Posters -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-scroll service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Leaflets & Posters</h3>
+                    <p class="text-grey text-sm">Eye-catching promotional materials</p>
+                </div>
+                
+                <!-- Brochures -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-book-open service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Brochures</h3>
+                    <p class="text-grey text-sm">Multi-fold marketing brochures and catalogues</p>
+                </div>
+                
+                <!-- Stickers & Badges -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-tag service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Stickers & Badges</h3>
+                    <p class="text-grey text-sm">Custom stickers and promotional badges</p>
+                </div>
+                
+                <!-- Photo Printing -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-camera service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Photo Printing</h3>
+                    <p class="text-grey text-sm">High-quality photo prints and enlargements</p>
+                </div>
+                
+                <!-- Colour Xerox -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-copy service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Colour Xerox</h3>
+                    <p class="text-grey text-sm">Fast and accurate color copying services</p>
+                </div>
+                
+                <!-- Spiral Binding -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-ring service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Spiral Binding</h3>
+                    <p class="text-grey text-sm">Professional document binding services</p>
+                </div>
+                
+                <!-- Lamination -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-layer-group service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Lamination</h3>
+                    <p class="text-grey text-sm">Protective lamination for documents</p>
+                </div>
+                
+                <!-- Custom T-Shirts -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-tshirt service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Custom T-Shirts</h3>
+                    <p class="text-grey text-sm">Personalized t-shirt printing and embroidery</p>
+                </div>
+                
+                <!-- Mugs & Plates -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-coffee service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Mugs & Plates</h3>
+                    <p class="text-grey text-sm">Custom printed mugs and ceramic items</p>
+                </div>
+                
+                <!-- Caps & Gift Items -->
+                <div class="service-card bg-white p-6 rounded-lg card-shadow card-hover text-center fade-in">
+                    <i class="fas fa-gift service-icon mx-auto"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Caps & Gift Items</h3>
+                    <p class="text-grey text-sm">Promotional caps and corporate gifts</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="btn-primary px-8 py-4 text-lg" onclick="window.location.href='services.html'">
+                    <i class="fas fa-eye mr-2"></i>
+                    View All Services
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview Section -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Our Work Gallery
+                </h2>
+                <p class="text-grey text-lg">
+                    See our quality printing work and finished products
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/services/business-cards.jpg')">
+                    <img src="resources/services/business-cards.jpg" alt="Business Cards" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/services/custom-tshirts.jpg')">
+                    <img src="resources/services/custom-tshirts.jpg" alt="Custom T-Shirts" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/services/brochures.jpg')">
+                    <img src="resources/services/brochures.jpg" alt="Brochures" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/services/id-cards.jpg')">
+                    <img src="resources/services/id-cards.jpg" alt="ID Cards" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/services/mugs-gifts.jpg')">
+                    <img src="resources/services/mugs-gifts.jpg" alt="Mugs & Gifts" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/gallery/banner-printing.jpg')">
+                    <img src="resources/gallery/banner-printing.jpg" alt="Banner Printing" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/gallery/binding-services.jpg')">
+                    <img src="resources/gallery/binding-services.jpg" alt="Binding Services" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-image relative cursor-pointer fade-in" onclick="openLightbox('resources/business-cards-2.jpeg')">
+                    <img src="resources/business-cards-2.jpeg" alt="Business Cards Samples" class="w-full h-48 object-cover">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn-primary px-8 py-4 text-lg" onclick="window.location.href='gallery.html'">
+                    <i class="fas fa-images mr-2"></i>
+                    View Full Gallery
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Downloads
+                </h2>
+                <p class="text-grey text-lg">
+                    Browse our brochures, templates, and sample designs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="download-card text-center fade-in">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Brochure PDF</h3>
+                    <p class="text-grey mb-4">Complete service catalogue with pricing information</p>
+                    <button class="btn-primary" onclick="downloadFile('brochure.pdf')">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </button>
+                </div>
+                
+                <div class="download-card text-center fade-in">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Visiting Card Samples</h3>
+                    <p class="text-grey mb-4">Sample business card designs and templates</p>
+                    <button class="btn-primary" onclick="downloadFile('visiting-cards-samples.pdf')">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </button>
+                </div>
+                
+                <div class="download-card text-center fade-in">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <h3 class="font-poppins font-semibold text-primary mb-2">Pricing Leaflet</h3>
+                    <p class="text-grey mb-4">Detailed pricing for all printing services</p>
+                    <button class="btn-primary" onclick="downloadFile('pricing-leaflet.pdf')">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="btn-gold px-8 py-4 text-lg" onclick="window.location.href='downloads.html'">
+                    <i class="fas fa-folder-open mr-2"></i>
+                    View All Downloads
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Preview Section -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Customer Reviews
+                </h2>
+                <p class="text-grey text-lg">
+                    What our customers say about our services
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="review-card fade-in">
+                    <div class="star-rating mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Excellent service and quality printing. Got my business cards done here and they look professional. Highly recommended!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            RK
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Rajesh Kumar</p>
+                            <p class="text-sm text-grey">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card fade-in">
+                    <div class="star-rating mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Fast turnaround time and reasonable prices. The custom t-shirts for our event were perfect. Will definitely come back!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            PS
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Priya Sharma</p>
+                            <p class="text-sm text-grey">Event Organizer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card fade-in">
+                    <div class="star-rating mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Great experience! They helped design our company brochures and the final product exceeded expectations. Professional team."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            MR
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Manoj Reddy</p>
+                            <p class="text-sm text-grey">Marketing Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="btn-primary px-8 py-4 text-lg" onclick="window.open('https://g.page/r/CSV66ricJWPgEBE/review', '_blank')">
+                    <i class="fas fa-pen mr-2"></i>
+                    Write a Review on Google
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Visit Our Shop
+                </h2>
+                <p class="text-grey text-lg">
+                    Conveniently located in Medchal for all your printing needs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-lg card-shadow">
+                        <h3 class="font-poppins font-semibold text-2xl text-primary mb-6">
+                            <i class="fas fa-map-marker-alt text-gold mr-3"></i>
+                            Our Location
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-building text-gold mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Address:</p>
+                                    <p class="text-grey">Lakshmi Printers, 12-93, Medchal Checkpost, Kistapur Rd, near NH - 44, Hyderabad, Telangana 501401</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gold mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Phone:</p>
+                                    <p class="text-grey">+91 8985827977, +91 7036838741</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-gold mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Working Hours:</p>
+                                    <p class="text-grey">Mon - Sat: 8:00 AM - 9:00 PM<br>Sunday: 9:00 AM - 9:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                            <button class="btn-primary flex-1" onclick="openGoogleMaps()">
+                                <i class="fas fa-map mr-2"></i>
+                                Open in Maps
+                            </button>
+                            <button class="btn-gold flex-1" onclick="getDirections()">
+                                <i class="fas fa-directions mr-2"></i>
+                                Get Directions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3802.6805664036665!2d78.48570260823598!3d17.617897185764168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb87a448da5c41%3A0xe063259cb8ea7a25!2sLakshmi%20Printers!5e0!3m2!1sen!2sin!4v1765704196754!5m2!1sen!2sin"
+                            width="600"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="fade-in">
+                    <img src="resources/logo.png" alt="Lakshmi Printers" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">
+                        Premium printing solutions for businesses and individuals in Medchal. Quality, reliability, and excellence in every print.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Business Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Brochures</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Custom T-Shirts</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">ID Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Digital Printing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gold mt-1 mr-3"></i>
+                            <p class="text-gray-300 text-sm">Lakshmi Printers, 12-93, Medchal Checkpost, Kistapur Rd, near NH - 44, Hyderabad, Telangana 501401</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">+91 8985827977</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">lakshmiprinters7977@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Lakshmi Printers. All rights reserved. | 
+                    <span class="text-gold">Designed with ❤️ for quality printing</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
+        <div class="relative max-w-4xl max-h-full p-4">
+            <button id="close-lightbox" class="absolute top-4 right-4 text-white text-3xl z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain">
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

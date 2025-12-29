@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Lakshmi Printers | Customer Testimonials & Feedback</title>
+    <meta name="description" content="Read what our customers say about Lakshmi Printers. Check out our reviews and testimonials for printing services in Medchal.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-maroon: #7A1F2F;
+            --gold-accent: #F0C419;
+            --ivory-white: #F6F6F6;
+            --carbon-black: #1A1A1A;
+            --cool-grey: #707070;
+            --soft-grey: #DADADA;
+            --soft-cyan: #33A1C9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory-white);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-maroon);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold-accent);
+        }
+        
+        .text-primary {
+            color: var(--primary-maroon);
+        }
+        
+        .text-gold {
+            color: var(--gold-accent);
+        }
+        
+        .text-grey {
+            color: var(--cool-grey);
+        }
+        
+        .border-grey {
+            border-color: var(--soft-grey);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, #5A1824 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-maroon);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6B1A29;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.3);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: var(--primary-maroon);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-gold:hover {
+            background-color: #E6B800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 196, 25, 0.3);
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--primary-maroon);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--gold-accent);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--gold-accent);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.15);
+        }
+        
+        .star-rating {
+            color: var(--gold-accent);
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-maroon);
+            margin-bottom: 8px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid var(--soft-grey);
+            background: white;
+            color: var(--cool-grey);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-maroon);
+            color: white;
+            border-color: var(--primary-maroon);
+        }
+        
+        .review-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .review-slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .review-slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-maroon);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-nav:hover {
+            background: var(--gold-accent);
+            color: var(--primary-maroon);
+        }
+        
+        .slider-prev {
+            left: 10px;
+        }
+        
+        .slider-next {
+            right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .stats-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="resources/logo.png" alt="Lakshmi Printers Logo" class="h-12 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link text-gold">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- Call Now Button -->
+                <button class="btn-gold" onclick="window.location.href='tel:+919999999999'">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link text-gold">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center fade-in">
+                <h1 class="hero-title font-poppins font-bold text-5xl md:text-6xl mb-6">
+                    Customer Reviews
+                </h1>
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    See what our satisfied customers say about our printing services. Real feedback from businesses and individuals who trust Lakshmi Printers.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-gold" onclick="window.open('https://g.page/r/XXXXXXXX/review', '_blank')">
+                        <i class="fas fa-pen mr-2"></i>
+                        Write a Review
+                    </button>
+                    <button class="btn-primary" onclick="window.location.href='services.html'">
+                        <i class="fas fa-list mr-2"></i>
+                        Our Services
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Statistics -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 fade-in">
+                <div class="stats-card">
+                    <div class="stats-number">4.9</div>
+                    <div class="text-gold text-lg mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey font-medium">Average Rating</p>
+                </div>
+                
+                <div class="stats-card">
+                    <div class="stats-number">500+</div>
+                    <p class="text-grey font-medium">Happy Customers</p>
+                </div>
+                
+                <div class="stats-card">
+                    <div class="stats-number">1200+</div>
+                    <p class="text-grey font-medium">Projects Completed</p>
+                </div>
+                
+                <div class="stats-card">
+                    <div class="stats-number">98%</div>
+                    <p class="text-grey font-medium">Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Categories Filter -->
+    <section class="py-12" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 fade-in">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th mr-2"></i>
+                    All Reviews
+                </button>
+                <button class="filter-btn" data-filter="latest">
+                    <i class="fas fa-clock mr-2"></i>
+                    Latest
+                </button>
+                <button class="filter-btn" data-filter="5-star">
+                    <i class="fas fa-star mr-2"></i>
+                    5-Star Reviews
+                </button>
+                <button class="filter-btn" data-filter="business">
+                    <i class="fas fa-briefcase mr-2"></i>
+                    Business Services
+                </button>
+                <button class="filter-btn" data-filter="custom">
+                    <i class="fas fa-tshirt mr-2"></i>
+                    Custom Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="reviews-grid">
+                
+                <!-- Review 1 -->
+                <div class="review-card fade-in" data-category="business 5-star">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Excellent service and quality printing. Got my business cards done here and they look professional. The team was very helpful in designing and the turnaround time was impressive. Highly recommended!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            RK
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Rajesh Kumar</p>
+                            <p class="text-sm text-grey">Business Owner • 2 weeks ago</p>
+                            <p class="text-xs text-grey">Service: Business Cards</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card fade-in" data-category="custom 5-star latest">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Fast turnaround time and reasonable prices. The custom t-shirts for our company event were perfect. The colors were vibrant and the printing quality was excellent. Will definitely come back!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            PS
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Priya Sharma</p>
+                            <p class="text-sm text-grey">Event Organizer • 1 week ago</p>
+                            <p class="text-xs text-grey">Service: Custom T-Shirts</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card fade-in" data-category="business 5-star">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Great experience! They helped design our company brochures and the final product exceeded expectations. Professional team with excellent customer service. The quality is outstanding."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            MR
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Manoj Reddy</p>
+                            <p class="text-sm text-grey">Marketing Manager • 3 weeks ago</p>
+                            <p class="text-xs text-grey">Service: Brochures</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card fade-in" data-category="custom 5-star latest">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Ordered custom mugs for our office and they came out beautifully. The printing is clear and the colors are exactly what we wanted. The team was very patient with our design changes."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            SK
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Swathi Kiran</p>
+                            <p class="text-sm text-grey">Office Manager • 5 days ago</p>
+                            <p class="text-xs text-grey">Service: Custom Mugs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="review-card fade-in" data-category="business 5-star">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Best printing service in Medchal! I've been using them for all my business printing needs for over a year now. Consistent quality, competitive prices, and excellent customer support."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            SR
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Suresh Reddy</p>
+                            <p class="text-sm text-grey">Entrepreneur • 1 month ago</p>
+                            <p class="text-xs text-grey">Service: Various Business Printing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="review-card fade-in" data-category="custom 5-star latest">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "The ID cards they made for our school are perfect. Durable, professional, and the students love them. The magnetic strips work flawlessly with our access system."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            AS
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Anita Sharma</p>
+                            <p class="text-sm text-grey">School Administrator • 2 weeks ago</p>
+                            <p class="text-xs text-grey">Service: ID Cards</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 7 -->
+                <div class="review-card fade-in" data-category="business 5-star">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Professional service from start to finish. They helped us with our marketing materials and the results were fantastic. The team knows what they're doing and delivers quality work."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            VK
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Vijay Kumar</p>
+                            <p class="text-sm text-grey">Business Development • 3 weeks ago</p>
+                            <p class="text-xs text-grey">Service: Marketing Materials</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 8 -->
+                <div class="review-card fade-in" data-category="custom 5-star latest">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "The banners they printed for our event were absolutely stunning. The colors were vibrant and the material was perfect for outdoor use. Highly recommend their services!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            PM
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Pooja Mehta</p>
+                            <p class="text-sm text-grey">Event Coordinator • 1 week ago</p>
+                            <p class="text-xs text-grey">Service: Event Banners</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 9 -->
+                <div class="review-card fade-in" data-category="business 5-star">
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-grey mb-4">
+                        "Reliable and professional printing service. They always deliver on time and the quality is consistently excellent. Our go-to printing partner for all business needs."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                            RS
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary">Ramesh Singh</p>
+                            <p class="text-sm text-grey">Operations Manager • 2 months ago</p>
+                            <p class="text-xs text-grey">Service: Business Printing</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Load More Reviews -->
+            <div class="text-center mt-12">
+                <button class="btn-primary px-8 py-4 text-lg" id="load-more-reviews">
+                    <i class="fas fa-plus mr-2"></i>
+                    Load More Reviews
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Review Slider -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Featured Review
+                </h2>
+                <p class="text-grey text-lg">
+                    Our most recent 5-star customer experience
+                </p>
+            </div>
+            
+            <div class="review-slider relative bg-white rounded-lg card-shadow p-8 fade-in">
+                <div class="review-slide active">
+                    <div class="text-center">
+                        <div class="star-rating justify-center mb-6">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <blockquote class="text-xl text-grey mb-6 italic">
+                            "Outstanding quality and service! Lakshmi Printers has been our trusted printing partner for over two years. They consistently deliver exceptional results with quick turnaround times. The team is knowledgeable, friendly, and always goes the extra mile to ensure our projects are perfect. Highly recommended for all printing needs!"
+                        </blockquote>
+                        <div class="flex items-center justify-center">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                                SK
+                            </div>
+                            <div class="text-left">
+                                <p class="font-poppins font-semibold text-lg text-primary">Satish Kumar</p>
+                                <p class="text-grey">Managing Director, Tech Solutions Pvt Ltd</p>
+                                <p class="text-sm text-grey mt-1">Reviewed 3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="slider-nav slider-prev" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-nav slider-next" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Customers Love Us -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Why Our Customers Love Us
+                </h2>
+                <p class="text-grey text-lg">
+                    The reasons behind our excellent customer satisfaction
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-3xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Fast Delivery</h3>
+                    <p class="text-grey">
+                        Quick turnaround times without compromising on quality. We understand the importance of meeting deadlines.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-award text-3xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Premium Quality</h3>
+                    <p class="text-grey">
+                        High-quality materials and advanced printing technology ensure professional results every time.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-3xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Expert Support</h3>
+                    <p class="text-grey">
+                        Knowledgeable team ready to help with design, material selection, and technical guidance.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-dollar-sign text-3xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Competitive Pricing</h3>
+                    <p class="text-grey">
+                        Transparent pricing with no hidden costs. Excellent value for money on all printing services.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-6">
+                    Experience Our Service Excellence
+                </h2>
+                <p class="text-grey text-xl mb-8">
+                    Join hundreds of satisfied customers who trust Lakshmi Printers for their printing needs. Contact us today to discuss your project.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-lg px-8 py-4" onclick="window.location.href='contact.html'">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Get Quote
+                    </button>
+                    <button class="btn-gold text-lg px-8 py-4" onclick="window.location.href='tel:+919999999999'">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Now
+                    </button>
+                    <button class="btn-primary text-lg px-8 py-4" onclick="window.open('https://g.page/r/XXXXXXXX/review', '_blank')">
+                        <i class="fas fa-pen mr-2"></i>
+                        Leave Review
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="fade-in">
+                    <img src="resources/logo.png" alt="Lakshmi Printers" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">
+                        Premium printing solutions for businesses and individuals in Medchal. Quality, reliability, and excellence in every print.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Business Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Brochures</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Custom T-Shirts</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">ID Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Digital Printing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gold mt-1 mr-3"></i>
+                            <p class="text-gray-300 text-sm">12-93, Medchal Check-Post, Kistapur Road, Near NH-44, Medchal, Telangana 501401</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">+91 99999 99999</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">info@lakshmiprinters.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Lakshmi Printers. All rights reserved. | 
+                    <span class="text-gold">Designed with ❤️ for quality printing</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Reviews functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const reviewCards = document.querySelectorAll('.review-card');
+            const loadMoreBtn = document.getElementById('load-more-reviews');
+            
+            let visibleReviews = 6;
+            
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter reviews
+                    reviewCards.forEach(card => {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        if (filter === 'all' || categories.includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Reset visible count
+                    visibleReviews = 6;
+                    updateVisibleReviews();
+                });
+            });
+            
+            // Load more functionality
+            loadMoreBtn.addEventListener('click', function() {
+                visibleReviews += 6;
+                updateVisibleReviews();
+                
+                if (visibleReviews >= reviewCards.length) {
+                    this.style.display = 'none';
+                }
+            });
+            
+            function updateVisibleReviews() {
+                const visibleCards = Array.from(reviewCards).filter(card => card.style.display !== 'none');
+                
+                visibleCards.forEach((card, index) => {
+                    if (index < visibleReviews) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Initialize
+            updateVisibleReviews();
+        });
+        
+        // Review slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.review-slide');
+        
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        // Auto-advance slider
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>

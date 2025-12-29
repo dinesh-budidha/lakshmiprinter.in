@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Lakshmi Printers | Portfolio of Our Printing Work</title>
+    <meta name="description" content="Browse our gallery of printing work including business cards, brochures, custom merchandise, and more. See the quality of our printing services in Medchal.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-maroon: #7A1F2F;
+            --gold-accent: #F0C419;
+            --ivory-white: #F6F6F6;
+            --carbon-black: #1A1A1A;
+            --cool-grey: #707070;
+            --soft-grey: #DADADA;
+            --soft-cyan: #33A1C9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory-white);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-maroon);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold-accent);
+        }
+        
+        .text-primary {
+            color: var(--primary-maroon);
+        }
+        
+        .text-gold {
+            color: var(--gold-accent);
+        }
+        
+        .text-grey {
+            color: var(--cool-grey);
+        }
+        
+        .border-grey {
+            border-color: var(--soft-grey);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, #5A1824 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-maroon);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6B1A29;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.3);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: var(--primary-maroon);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-gold:hover {
+            background-color: #E6B800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 196, 25, 0.3);
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--primary-maroon);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--gold-accent);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(122, 31, 47, 0.8) 0%, rgba(90, 24, 36, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid var(--soft-grey);
+            background: white;
+            color: var(--cool-grey);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-maroon);
+            color: white;
+            border-color: var(--primary-maroon);
+        }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 24px;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="resources/logo.png" alt="Lakshmi Printers Logo" class="h-12 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link text-gold">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- Call Now Button -->
+                <button class="btn-gold" onclick="window.location.href='tel:+919999999999'">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link text-gold">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center fade-in">
+                <h1 class="hero-title font-poppins font-bold text-5xl md:text-6xl mb-6">
+                    Our Gallery
+                </h1>
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    Explore our portfolio of high-quality printing work. See the craftsmanship, attention to detail, and professional results we deliver for every project.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary" onclick="window.location.href='services.html'">
+                        <i class="fas fa-list mr-2"></i>
+                        View Services
+                    </button>
+                    <button class="btn-gold" onclick="window.location.href='contact.html'">
+                        <i class="fas fa-quote-left mr-2"></i>
+                        Get Quote
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Categories Filter -->
+    <section class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 fade-in">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th mr-2"></i>
+                    All Work
+                </button>
+                <button class="filter-btn" data-filter="business">
+                    <i class="fas fa-briefcase mr-2"></i>
+                    Business Printing
+                </button>
+                <button class="filter-btn" data-filter="marketing">
+                    <i class="fas fa-bullhorn mr-2"></i>
+                    Marketing Materials
+                </button>
+                <button class="filter-btn" data-filter="custom">
+                    <i class="fas fa-tshirt mr-2"></i>
+                    Custom Merchandise
+                </button>
+                <button class="filter-btn" data-filter="shop">
+                    <i class="fas fa-store mr-2"></i>
+                    Shop Images
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="masonry-grid" id="gallery-grid">
+                
+                <!-- Business Cards -->
+                <div class="masonry-item gallery-item fade-in" data-category="business" onclick="openLightbox('resources/services/business-cards.jpg')">
+                    <img src="resources/services/business-cards.jpg" alt="Business Cards Collection" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Business Cards</h3>
+                        <p class="text-sm">Professional business card designs</p>
+                    </div>
+                </div>
+
+                <!-- Custom T-Shirts -->
+                <div class="masonry-item gallery-item fade-in" data-category="custom" onclick="openLightbox('resources/services/custom-tshirts.jpg')">
+                    <img src="resources/services/custom-tshirts.jpg" alt="Custom T-Shirts" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Custom T-Shirts</h3>
+                        <p class="text-sm">Personalized t-shirt printing</p>
+                    </div>
+                </div>
+
+                <!-- Brochures -->
+                <div class="masonry-item gallery-item fade-in" data-category="marketing" onclick="openLightbox('resources/services/brochures.jpg')">
+                    <img src="resources/services/brochures.jpg" alt="Brochures and Leaflets" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Marketing Brochures</h3>
+                        <p class="text-sm">Professional marketing materials</p>
+                    </div>
+                </div>
+
+                <!-- ID Cards -->
+                <div class="masonry-item gallery-item fade-in" data-category="business" onclick="openLightbox('resources/services/id-cards.jpg')">
+                    <img src="resources/services/id-cards.jpg" alt="ID Cards" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">ID Cards</h3>
+                        <p class="text-sm">Professional identification cards</p>
+                    </div>
+                </div>
+
+                <!-- Mugs & Gifts -->
+                <div class="masonry-item gallery-item fade-in" data-category="custom" onclick="openLightbox('resources/services/mugs-gifts.jpg')">
+                    <img src="resources/services/mugs-gifts.jpg" alt="Custom Mugs and Gifts" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Custom Mugs</h3>
+                        <p class="text-sm">Personalized gift items</p>
+                    </div>
+                </div>
+
+                <!-- Banner Printing -->
+                <div class="masonry-item gallery-item fade-in" data-category="marketing" onclick="openLightbox('resources/gallery/banner-printing.jpg')">
+                    <img src="resources/gallery/banner-printing.jpg" alt="Banner Printing" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Large Format Banners</h3>
+                        <p class="text-sm">Professional banner printing</p>
+                    </div>
+                </div>
+
+                <!-- Binding Services -->
+                <div class="masonry-item gallery-item fade-in" data-category="shop" onclick="openLightbox('resources/gallery/binding-services.jpg')">
+                    <img src="resources/gallery/binding-services.jpg" alt="Binding Services" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Spiral Binding</h3>
+                        <p class="text-sm">Professional document finishing</p>
+                    </div>
+                </div>
+
+                <!-- Business Cards 2 -->
+                <div class="masonry-item gallery-item fade-in" data-category="business" onclick="openLightbox('resources/business-cards-2.jpg')">
+                    <img src="resources/business-cards-2.jpg" alt="Business Card Samples" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Premium Cards</h3>
+                        <p class="text-sm">High-end business card samples</p>
+                    </div>
+                </div>
+
+                <!-- Shop Interior -->
+                <div class="masonry-item gallery-item fade-in" data-category="shop" onclick="openLightbox('resources/shop-interior.jpg')">
+                    <img src="resources/shop-interior.jpg" alt="Shop Interior" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Our Shop</h3>
+                        <p class="text-sm">Modern printing facility</p>
+                    </div>
+                </div>
+
+                <!-- Digital Printer -->
+                <div class="masonry-item gallery-item fade-in" data-category="shop" onclick="openLightbox('resources/equipment/digital-printer.jpg')">
+                    <img src="resources/equipment/digital-printer.jpg" alt="Digital Printing Equipment" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Digital Printer</h3>
+                        <p class="text-sm">State-of-the-art equipment</p>
+                    </div>
+                </div>
+
+                <!-- Printing Equipment -->
+                <div class="masonry-item gallery-item fade-in" data-category="shop" onclick="openLightbox('resources/printing-equipment.jpg')">
+                    <img src="resources/printing-equipment.jpg" alt="Professional Printing Equipment" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Equipment</h3>
+                        <p class="text-sm">Professional printing machinery</p>
+                    </div>
+                </div>
+
+                <!-- T-Shirt Machine -->
+                <div class="masonry-item gallery-item fade-in" data-category="custom" onclick="openLightbox('resources/tshirt-machine.jpg')">
+                    <img src="resources/tshirt-machine.jpg" alt="T-Shirt Printing Machine" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">T-Shirt Printing</h3>
+                        <p class="text-sm">Custom apparel production</p>
+                    </div>
+                </div>
+
+                <!-- Hero Background -->
+                <div class="masonry-item gallery-item fade-in" data-category="shop" onclick="openLightbox('resources/hero-bg.jpg')">
+                    <img src="resources/hero-bg.jpg" alt="Printing Facility" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Our Facility</h3>
+                        <p class="text-sm">Modern printing workspace</p>
+                    </div>
+                </div>
+
+                <!-- Business Cards Collection -->
+                <div class="masonry-item gallery-item fade-in" data-category="business" onclick="openLightbox('resources/business-cards.jpg')">
+                    <img src="resources/business-cards.jpg" alt="Business Cards Collection" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Card Collection</h3>
+                        <p class="text-sm">Various business card designs</p>
+                    </div>
+                </div>
+
+                <!-- Logo Design -->
+                <div class="masonry-item gallery-item fade-in" data-category="business" onclick="openLightbox('resources/logo.png')">
+                    <img src="resources/logo.png" alt="Logo Design" class="w-full h-auto">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-3xl mb-2"></i>
+                        <h3 class="font-poppins font-semibold text-lg">Brand Identity</h3>
+                        <p class="text-sm">Professional logo design</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="btn-primary px-8 py-4 text-lg" id="load-more-btn">
+                    <i class="fas fa-plus mr-2"></i>
+                    Load More Images
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance Section -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Our Quality Promise
+                </h2>
+                <p class="text-grey text-lg">
+                    Every project meets our high standards of excellence
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Attention to Detail</h3>
+                    <p class="text-grey">
+                        Every project undergoes rigorous quality checks to ensure colors, alignment, and finishing meet our exacting standards.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-palette text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Color Accuracy</h3>
+                    <p class="text-grey">
+                        We use calibrated equipment and premium materials to ensure your brand colors are reproduced accurately and consistently.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Durability Guaranteed</h3>
+                    <p class="text-grey">
+                        Our materials and finishing processes ensure your printed items maintain their quality and appearance over time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-6">
+                    Ready to Create Something Amazing?
+                </h2>
+                <p class="text-grey text-xl mb-8">
+                    Let us bring your vision to life with the same quality and attention to detail you see in our gallery. Contact us to discuss your next project.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-lg px-8 py-4" onclick="window.location.href='contact.html'">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Start Your Project
+                    </button>
+                    <button class="btn-gold text-lg px-8 py-4" onclick="window.location.href='services.html'">
+                        <i class="fas fa-list mr-2"></i>
+                        View Services
+                    </button>
+                    <button class="btn-primary text-lg px-8 py-4" onclick="window.location.href='tel:+919999999999'">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="fade-in">
+                    <img src="resources/logo.png" alt="Lakshmi Printers" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">
+                        Premium printing solutions for businesses and individuals in Medchal. Quality, reliability, and excellence in every print.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Business Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Brochures</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Custom T-Shirts</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">ID Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Digital Printing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gold mt-1 mr-3"></i>
+                            <p class="text-gray-300 text-sm">12-93, Medchal Check-Post, Kistapur Road, Near NH-44, Medchal, Telangana 501401</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">+91 99999 99999</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">info@lakshmiprinters.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Lakshmi Printers. All rights reserved. | 
+                    <span class="text-gold">Designed with ❤️ for quality printing</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Gallery filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Load more functionality
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            let loadCount = 0;
+            
+            loadMoreBtn.addEventListener('click', function() {
+                // Simulate loading more images
+                loadCount++;
+                if (loadCount >= 2) {
+                    this.style.display = 'none';
+                    showNotification('All images loaded!', 'info');
+                } else {
+                    showNotification('Loading more images...', 'info');
+                    setTimeout(() => {
+                        showNotification('More images loaded!', 'success');
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

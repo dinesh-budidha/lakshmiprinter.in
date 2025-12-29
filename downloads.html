@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads - Lakshmi Printers | Brochures, Templates & Resources</title>
+    <meta name="description" content="Download our brochures, templates, and sample designs. Access helpful resources for your printing projects from Lakshmi Printers in Medchal.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-maroon: #7A1F2F;
+            --gold-accent: #F0C419;
+            --ivory-white: #F6F6F6;
+            --carbon-black: #1A1A1A;
+            --cool-grey: #707070;
+            --soft-grey: #DADADA;
+            --soft-cyan: #33A1C9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory-white);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-maroon);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold-accent);
+        }
+        
+        .text-primary {
+            color: var(--primary-maroon);
+        }
+        
+        .text-gold {
+            color: var(--gold-accent);
+        }
+        
+        .text-grey {
+            color: var(--cool-grey);
+        }
+        
+        .border-grey {
+            border-color: var(--soft-grey);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, #5A1824 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-maroon);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6B1A29;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.3);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: var(--primary-maroon);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-gold:hover {
+            background-color: #E6B800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 196, 25, 0.3);
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--primary-maroon);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--gold-accent);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .download-card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--gold-accent);
+        }
+        
+        .download-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .pdf-icon {
+            color: #E74C3C;
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .doc-icon {
+            color: #3498DB;
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .image-icon {
+            color: #27AE60;
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid var(--soft-grey);
+            background: white;
+            color: var(--cool-grey);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-maroon);
+            color: white;
+            border-color: var(--primary-maroon);
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding-left: 48px;
+            border: 2px solid var(--soft-grey);
+            border-radius: 25px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-maroon);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cool-grey);
+        }
+        
+        .file-size {
+            background-color: var(--ivory-white);
+            color: var(--cool-grey);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="resources/logo.png" alt="Lakshmi Printers Logo" class="h-12 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link text-gold">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- Call Now Button -->
+                <button class="btn-gold" onclick="window.location.href='tel:+919999999999'">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link text-gold">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center fade-in">
+                <h1 class="hero-title font-poppins font-bold text-5xl md:text-6xl mb-6">
+                    Downloads & Resources
+                </h1>
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    Access our collection of brochures, templates, and helpful resources. Everything you need to plan and execute your printing projects successfully.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary" onclick="window.location.href='services.html'">
+                        <i class="fas fa-list mr-2"></i>
+                        View Services
+                    </button>
+                    <button class="btn-gold" onclick="window.location.href='contact.html'">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Get Support
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-6 items-center justify-between fade-in">
+                <!-- Search Box -->
+                <div class="search-box flex-1 max-w-md">
+                    <input type="text" placeholder="Search downloads..." class="w-full py-3 px-4" id="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th mr-2"></i>
+                        All
+                    </button>
+                    <button class="filter-btn" data-filter="brochures">
+                        <i class="fas fa-book-open mr-2"></i>
+                        Brochures
+                    </button>
+                    <button class="filter-btn" data-filter="templates">
+                        <i class="fas fa-file-alt mr-2"></i>
+                        Templates
+                    </button>
+                    <button class="filter-btn" data-filter="catalogues">
+                        <i class="fas fa-list mr-2"></i>
+                        Catalogues
+                    </button>
+                    <button class="filter-btn" data-filter="guides">
+                        <i class="fas fa-book mr-2"></i>
+                        Guides
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Grid -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="downloads-grid">
+                
+                <!-- Company Brochure -->
+                <div class="download-card fade-in" data-category="brochures" data-search="company brochure services overview">
+                    <div class="text-center">
+                        <i class="fas fa-file-pdf pdf-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Company Brochure
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Complete overview of Lakshmi Printers services, capabilities, and company information.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">2.5 MB</span>
+                            <span class="text-sm text-grey">PDF • 8 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('company-brochure.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Catalogue -->
+                <div class="download-card fade-in" data-category="catalogues" data-search="service catalogue pricing products">
+                    <div class="text-center">
+                        <i class="fas fa-file-pdf pdf-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Service Catalogue
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Detailed catalogue of all printing services with specifications and pricing information.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">3.2 MB</span>
+                            <span class="text-sm text-grey">PDF • 12 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('service-catalogue.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Business Card Templates -->
+                <div class="download-card fade-in" data-category="templates" data-search="business card templates design visiting card">
+                    <div class="text-center">
+                        <i class="fas fa-file-alt doc-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Business Card Templates
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Professional business card design templates in various styles and formats for easy customization.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">1.8 MB</span>
+                            <span class="text-sm text-grey">ZIP • 15 templates</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('business-card-templates.zip')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download ZIP
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Brochure Templates -->
+                <div class="download-card fade-in" data-category="templates" data-search="brochure templates marketing leaflet design">
+                    <div class="text-center">
+                        <i class="fas fa-file-alt doc-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Brochure Templates
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Ready-to-use brochure and leaflet templates for marketing campaigns and business promotions.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">4.1 MB</span>
+                            <span class="text-sm text-grey">ZIP • 10 templates</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('brochure-templates.zip')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download ZIP
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pricing Guide -->
+                <div class="download-card fade-in" data-category="catalogues" data-search="pricing guide rates cost estimate">
+                    <div class="text-center">
+                        <i class="fas fa-file-pdf pdf-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Pricing Guide
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Comprehensive pricing guide for all printing services with quantity discounts and special offers.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">1.5 MB</span>
+                            <span class="text-sm text-grey">PDF • 6 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('pricing-guide.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Design Guidelines -->
+                <div class="download-card fade-in" data-category="guides" data-search="design guidelines print specifications requirements">
+                    <div class="text-center">
+                        <i class="fas fa-book doc-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Print Design Guidelines
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Essential guidelines for preparing print-ready files including specifications, formats, and best practices.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">950 KB</span>
+                            <span class="text-sm text-grey">PDF • 14 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('design-guidelines.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- T-Shirt Templates -->
+                <div class="download-card fade-in" data-category="templates" data-search="t-shirt templates apparel design custom clothing">
+                    <div class="text-center">
+                        <i class="fas fa-tshirt image-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            T-Shirt Design Templates
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Collection of t-shirt design templates and mockups for custom apparel printing projects.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">2.8 MB</span>
+                            <span class="text-sm text-grey">ZIP • 20 designs</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('tshirt-templates.zip')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download ZIP
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ID Card Templates -->
+                <div class="download-card fade-in" data-category="templates" data-search="id card templates identification badge employee">
+                    <div class="text-center">
+                        <i class="fas fa-id-badge doc-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            ID Card Templates
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Professional ID card design templates for employees, students, and visitor identification systems.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">1.2 MB</span>
+                            <span class="text-sm text-grey">ZIP • 12 templates</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('id-card-templates.zip')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download ZIP
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Paper Samples Guide -->
+                <div class="download-card fade-in" data-category="guides" data-search="paper samples types materials specifications">
+                    <div class="text-center">
+                        <i class="fas fa-book image-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Paper Samples Guide
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Comprehensive guide to paper types, weights, and finishes available for different printing applications.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">2.1 MB</span>
+                            <span class="text-sm text-grey">PDF • 10 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('paper-samples-guide.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Marketing Materials Guide -->
+                <div class="download-card fade-in" data-category="guides" data-search="marketing materials promotional items advertising">
+                    <div class="text-center">
+                        <i class="fas fa-bullhorn image-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Marketing Materials Guide
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Guide to effective marketing materials including brochures, flyers, posters, and promotional items.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">1.7 MB</span>
+                            <span class="text-sm text-grey">PDF • 16 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('marketing-materials-guide.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Products Catalogue -->
+                <div class="download-card fade-in" data-category="catalogues" data-search="custom products merchandise gifts promotional items">
+                    <div class="text-center">
+                        <i class="fas fa-gift pdf-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Custom Products Catalogue
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Complete catalogue of custom products including t-shirts, mugs, caps, and promotional gift items.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">3.5 MB</span>
+                            <span class="text-sm text-grey">PDF • 18 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('custom-products-catalogue.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Color Chart -->
+                <div class="download-card fade-in" data-category="guides" data-search="color chart pantone colors matching brand guidelines">
+                    <div class="text-center">
+                        <i class="fas fa-palette image-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Color Reference Chart
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Comprehensive color reference chart with Pantone matching system for accurate brand color reproduction.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">1.3 MB</span>
+                            <span class="text-sm text-grey">PDF • 8 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('color-reference-chart.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Finishing Options Guide -->
+                <div class="download-card fade-in" data-category="guides" data-search="finishing options binding lamination coating special effects">
+                    <div class="text-center">
+                        <i class="fas fa-tools doc-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Finishing Options Guide
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Detailed guide to finishing options including binding types, lamination, coating, and special effects.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">1.9 MB</span>
+                            <span class="text-sm text-grey">PDF • 12 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('finishing-options-guide.pdf')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Order Form Template -->
+                <div class="download-card fade-in" data-category="templates" data-search="order form template quotation request custom order">
+                    <div class="text-center">
+                        <i class="fas fa-file-alt doc-icon"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            Order Form Template
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Ready-to-use order form template for requesting quotes and placing custom printing orders.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="file-size">450 KB</span>
+                            <span class="text-sm text-grey">DOCX • 2 pages</span>
+                        </div>
+                        <button class="btn-primary w-full" onclick="downloadFile('order-form-template.docx')">
+                            <i class="fas fa-download mr-2"></i>
+                            Download DOCX
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-6">
+                    Need Help?
+                </h2>
+                <p class="text-grey text-xl mb-8">
+                    Can't find what you're looking for? Our team is here to help with any questions about our downloads or printing services.
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-phone text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-poppins font-semibold text-lg text-primary mb-2">Call Us</h3>
+                        <p class="text-grey mb-4">Speak with our printing experts</p>
+                        <button class="btn-primary" onclick="window.location.href='tel:+919999999999'">
+                            +91 99999 99999
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-poppins font-semibold text-lg text-primary mb-2">Email Us</h3>
+                        <p class="text-grey mb-4">Send us your questions</p>
+                        <button class="btn-primary" onclick="window.location.href='mailto:info@lakshmiprinters.com'">
+                            Send Email
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-comments text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-poppins font-semibold text-lg text-primary mb-2">WhatsApp</h3>
+                        <p class="text-grey mb-4">Chat with us instantly</p>
+                        <button class="btn-primary" onclick="openWhatsApp()">
+                            Start Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="fade-in">
+                    <img src="resources/logo.png" alt="Lakshmi Printers" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">
+                        Premium printing solutions for businesses and individuals in Medchal. Quality, reliability, and excellence in every print.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Business Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Brochures</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Custom T-Shirts</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">ID Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Digital Printing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gold mt-1 mr-3"></i>
+                            <p class="text-gray-300 text-sm">12-93, Medchal Check-Post, Kistapur Road, Near NH-44, Medchal, Telangana 501401</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">+91 99999 99999</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">info@lakshmiprinters.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Lakshmi Printers. All rights reserved. | 
+                    <span class="text-gold">Designed with ❤️ for quality printing</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Downloads functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const downloadCards = document.querySelectorAll('.download-card');
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                downloadCards.forEach(card => {
+                    const searchText = card.getAttribute('data-search') || '';
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (searchText.includes(searchTerm) || title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter cards
+                    downloadCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Clear search when filtering
+                    searchInput.value = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

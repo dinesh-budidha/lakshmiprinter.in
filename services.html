@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Lakshmi Printers | Professional Printing Solutions in Medchal</title>
+    <meta name="description" content="Explore our comprehensive printing services including business cards, brochures, custom t-shirts, ID cards, and more. Professional printing solutions in Medchal.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-maroon: #7A1F2F;
+            --gold-accent: #F0C419;
+            --ivory-white: #F6F6F6;
+            --carbon-black: #1A1A1A;
+            --cool-grey: #707070;
+            --soft-grey: #DADADA;
+            --soft-cyan: #33A1C9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ivory-white);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-maroon);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold-accent);
+        }
+        
+        .text-primary {
+            color: var(--primary-maroon);
+        }
+        
+        .text-gold {
+            color: var(--gold-accent);
+        }
+        
+        .text-grey {
+            color: var(--cool-grey);
+        }
+        
+        .border-grey {
+            border-color: var(--soft-grey);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, #5A1824 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-maroon);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6B1A29;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.3);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: var(--primary-maroon);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-gold:hover {
+            background-color: #E6B800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 196, 25, 0.3);
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--primary-maroon);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--gold-accent);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(122, 31, 47, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(122, 31, 47, 0.2);
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid var(--soft-grey);
+            background: white;
+            color: var(--cool-grey);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-maroon);
+            color: white;
+            border-color: var(--primary-maroon);
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: var(--soft-grey);
+            transform: translateY(-50%);
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-maroon);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .process-step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="resources/logo.png" alt="Lakshmi Printers Logo" class="h-12 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link text-gold">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- Call Now Button -->
+                <button class="btn-gold" onclick="window.location.href='tel:+919999999999'">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link text-gold">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="downloads.html" class="nav-link">Downloads</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center fade-in">
+                <h1 class="hero-title font-poppins font-bold text-5xl md:text-6xl mb-6">
+                    Our Services
+                </h1>
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    Comprehensive printing solutions tailored to meet all your business and personal needs. From business cards to custom merchandise, we deliver quality and excellence.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary" onclick="window.location.href='contact.html'">
+                        <i class="fas fa-quote-left mr-2"></i>
+                        Get Quote
+                    </button>
+                    <button class="btn-gold" onclick="window.location.href='tel:+919999999999'">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories Filter -->
+    <section class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 fade-in">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th mr-2"></i>
+                    All Services
+                </button>
+                <button class="filter-btn" data-filter="business">
+                    <i class="fas fa-briefcase mr-2"></i>
+                    Business Printing
+                </button>
+                <button class="filter-btn" data-filter="marketing">
+                    <i class="fas fa-bullhorn mr-2"></i>
+                    Marketing Materials
+                </button>
+                <button class="filter-btn" data-filter="custom">
+                    <i class="fas fa-tshirt mr-2"></i>
+                    Custom Products
+                </button>
+                <button class="filter-btn" data-filter="finishing">
+                    <i class="fas fa-tools mr-2"></i>
+                    Finishing Services
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+                
+                <!-- Visiting Cards -->
+                <div class="service-card fade-in" data-category="business">
+                    <img src="resources/services/business-cards.jpg" alt="Visiting Cards" class="service-image">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-id-card text-gold mr-2"></i>
+                            Visiting Cards
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Professional business cards with premium finishes. Choose from various paper types, coatings, and designs to make a lasting impression.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Premium paper options (300-400 GSM)</li>
+                                <li>• Matte, gloss, and velvet finishes</li>
+                                <li>• Spot UV and foil stamping</li>
+                                <li>• Custom shapes and sizes</li>
+                                <li>• Same-day printing available</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹200</span>
+                            <button class="btn-primary" onclick="orderService('visiting-cards')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Letterheads -->
+                <div class="service-card fade-in" data-category="business">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-file-alt text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-file-alt text-gold mr-2"></i>
+                            Letterheads
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Professional letterheads for corporate correspondence. Custom designs with your company logo and branding.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• High-quality bond paper</li>
+                                <li>• Custom watermark options</li>
+                                <li>• Multi-color printing</li>
+                                <li>• Bulk printing discounts</li>
+                                <li>• Fast delivery service</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹500</span>
+                            <button class="btn-primary" onclick="orderService('letterheads')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ID Cards -->
+                <div class="service-card fade-in" data-category="business">
+                    <img src="resources/services/id-cards.jpg" alt="ID Cards" class="service-image">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-badge text-gold mr-2"></i>
+                            ID Cards
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Professional ID cards for employees, students, and visitors. Durable plastic cards with security features.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• PVC card printing</li>
+                                <li>• Magnetic stripe encoding</li>
+                                <li>• Photo ID integration</li>
+                                <li>• Lanyard and clip options</li>
+                                <li>• Barcode and QR code support</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹25/card</span>
+                            <button class="btn-primary" onclick="orderService('id-cards')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bill Books -->
+                <div class="service-card fade-in" data-category="business">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-book text-gold mr-2"></i>
+                            Bill Books
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Customized invoice and receipt books with sequential numbering. Perfect for businesses, shops, and service providers.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Multi-part carbonless forms</li>
+                                <li>• Sequential numbering</li>
+                                <li>• Custom design and layout</li>
+                                <li>• Perforated pages</li>
+                                <li>• Various sizes available</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹300</span>
+                            <button class="btn-primary" onclick="orderService('bill-books')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stamps -->
+                <div class="service-card fade-in" data-category="business">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-stamp text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-stamp text-gold mr-2"></i>
+                            Stamps & Seals
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Custom rubber stamps and seals for official use. Various sizes and types available for different applications.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Self-inking and traditional stamps</li>
+                                <li>• Custom artwork and text</li>
+                                <li>• Various ink colors</li>
+                                <li>• Durable construction</li>
+                                <li>• Quick production time</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹150</span>
+                            <button class="btn-primary" onclick="orderService('stamps')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brochures -->
+                <div class="service-card fade-in" data-category="marketing">
+                    <img src="resources/services/brochures.jpg" alt="Brochures" class="service-image">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-book-open text-gold mr-2"></i>
+                            Brochures
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Multi-fold marketing brochures and catalogues. Perfect for product showcases, company profiles, and event promotions.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Bi-fold and tri-fold options</li>
+                                <li>• Premium paper stocks</li>
+                                <li>• Full-color printing</li>
+                                <li>• Custom sizes available</li>
+                                <li>• Professional finishing</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹800</span>
+                            <button class="btn-primary" onclick="orderService('brochures')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaflets & Posters -->
+                <div class="service-card fade-in" data-category="marketing">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-scroll text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-scroll text-gold mr-2"></i>
+                            Leaflets & Posters
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Eye-catching promotional materials for events, sales, and marketing campaigns. Various sizes and finishes available.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Multiple size options</li>
+                                <li>• Gloss and matte finishes</li>
+                                <li>• Weather-resistant materials</li>
+                                <li>• High-impact designs</li>
+                                <li>• Bulk printing available</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹2/sheet</span>
+                            <button class="btn-primary" onclick="orderService('leaflets-posters')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stickers & Badges -->
+                <div class="service-card fade-in" data-category="marketing">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-tag text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-tag text-gold mr-2"></i>
+                            Stickers & Badges
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Custom stickers and promotional badges for branding and marketing. Durable materials with weather-resistant properties.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Vinyl and paper options</li>
+                                <li>• Die-cut shapes available</li>
+                                <li>• UV-resistant coating</li>
+                                <li>• Easy peel backing</li>
+                                <li>• Custom sizes and designs</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹5/sticker</span>
+                            <button class="btn-primary" onclick="orderService('stickers-badges')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom T-Shirts -->
+                <div class="service-card fade-in" data-category="custom">
+                    <img src="resources/services/custom-tshirts.jpg" alt="Custom T-Shirts" class="service-image">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-tshirt text-gold mr-2"></i>
+                            Custom T-Shirts
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Personalized t-shirt printing with high-quality graphics. Perfect for events, teams, and promotional purposes.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Screen and digital printing</li>
+                                <li>• Various fabric options</li>
+                                <li>• Custom designs and logos</li>
+                                <li>• Bulk order discounts</li>
+                                <li>• Quick turnaround</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹200/shirt</span>
+                            <button class="btn-primary" onclick="orderService('custom-tshirts')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mugs & Plates -->
+                <div class="service-card fade-in" data-category="custom">
+                    <img src="resources/services/mugs-gifts.jpg" alt="Mugs & Plates" class="service-image">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-coffee text-gold mr-2"></i>
+                            Mugs & Plates
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Custom printed mugs and ceramic items for gifts and promotions. High-quality sublimation printing for lasting results.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Full-color sublimation printing</li>
+                                <li>• Dishwasher safe</li>
+                                <li>• Various mug styles</li>
+                                <li>• Plate printing available</li>
+                                <li>• Gift packaging options</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹150/mug</span>
+                            <button class="btn-primary" onclick="orderService('mugs-plates')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caps & Gift Items -->
+                <div class="service-card fade-in" data-category="custom">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-gift text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-gift text-gold mr-2"></i>
+                            Caps & Gift Items
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Promotional caps and corporate gift items with custom branding. Perfect for events and marketing campaigns.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Embroidery and printing options</li>
+                                <li>• Various cap styles</li>
+                                <li>• Corporate gift sets</li>
+                                <li>• Custom packaging</li>
+                                <li>• Bulk order discounts</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹100/item</span>
+                            <button class="btn-primary" onclick="orderService('caps-gifts')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Printing -->
+                <div class="service-card fade-in" data-category="finishing">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-camera text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-camera text-gold mr-2"></i>
+                            Photo Printing
+                        </h3>
+                        <p class="text-grey mb-4">
+                            High-quality photo printing and enlargements. Preserve your memories with professional photo printing services.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Various print sizes</li>
+                                <li>• Gloss and matte finishes</li>
+                                <li>• Photo editing services</li>
+                                <li>• Bulk photo printing</li>
+                                <li>• Same-day service</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹10/photo</span>
+                            <button class="btn-primary" onclick="orderService('photo-printing')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colour Xerox -->
+                <div class="service-card fade-in" data-category="finishing">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-copy text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-copy text-gold mr-2"></i>
+                            Colour Xerox
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Fast and accurate color copying services. High-quality digital copies for presentations, reports, and documentation.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• High-resolution copying</li>
+                                <li>• Various paper sizes</li>
+                                <li>• Binding options available</li>
+                                <li>• Fast turnaround</li>
+                                <li>• Bulk copying discounts</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹5/page</span>
+                            <button class="btn-primary" onclick="orderService('colour-xerox')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spiral Binding -->
+                <div class="service-card fade-in" data-category="finishing">
+                    <img src="resources/gallery/binding-services.jpg" alt="Spiral Binding" class="service-image">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-ring text-gold mr-2"></i>
+                            Spiral Binding
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Professional document binding services. Perfect for reports, presentations, and reference materials.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Plastic and metal coil options</li>
+                                <li>• Various binding sizes</li>
+                                <li>• Clear cover options</li>
+                                <li>• Custom front covers</li>
+                                <li>• Same-day service</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹50/book</span>
+                            <button class="btn-primary" onclick="orderService('spiral-binding')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lamination -->
+                <div class="service-card fade-in" data-category="finishing">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary to-gray-600 flex items-center justify-center">
+                        <i class="fas fa-layer-group text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-primary mb-3">
+                            <i class="fas fa-layer-group text-gold mr-2"></i>
+                            Lamination
+                        </h3>
+                        <p class="text-grey mb-4">
+                            Protective lamination for documents, photos, and certificates. Preserve important papers with professional lamination.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-primary mb-2">Features:</h4>
+                            <ul class="text-sm text-grey space-y-1">
+                                <li>• Gloss and matte finishes</li>
+                                <li>• Various thickness options</li>
+                                <li>• Pocket and roll lamination</li>
+                                <li>• ID card lamination</li>
+                                <li>• Fast service</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-semibold">Starting from ₹10/document</span>
+                            <button class="btn-primary" onclick="orderService('lamination')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process Section -->
+    <section class="section-padding py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-4">
+                    Our Printing Process
+                </h2>
+                <p class="text-grey text-lg">
+                    How we deliver exceptional results every time
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="process-step fade-in">
+                    <div class="process-number">1</div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">Consultation</h3>
+                    <p class="text-grey">
+                        We discuss your requirements, understand your vision, and provide expert recommendations for the best printing solution.
+                    </p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">2</div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">Design</h3>
+                    <p class="text-grey">
+                        Our design team creates or refines your artwork, ensuring it meets printing standards and achieves your desired impact.
+                    </p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">3</div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">Production</h3>
+                    <p class="text-grey">
+                        Using state-of-the-art equipment, we print your materials with precision, quality control, and attention to detail.
+                    </p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">4</div>
+                    <h3 class="font-poppins font-semibold text-lg text-primary mb-3">Delivery</h3>
+                    <p class="text-grey">
+                        We carefully package and deliver your finished products, ensuring they arrive in perfect condition and on time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section-padding py-20" style="background-color: var(--ivory-white);">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="font-poppins font-semibold text-4xl text-primary mb-6">
+                    Ready to Start Your Project?
+                </h2>
+                <p class="text-grey text-xl mb-8">
+                    Contact us today to discuss your printing needs. Our team is ready to help you create professional materials that make an impact.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-lg px-8 py-4" onclick="window.location.href='contact.html'">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Get Quote
+                    </button>
+                    <button class="btn-gold text-lg px-8 py-4" onclick="window.location.href='tel:+919999999999'">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Now
+                    </button>
+                    <button class="btn-primary text-lg px-8 py-4" onclick="window.location.href='gallery.html'">
+                        <i class="fas fa-images mr-2"></i>
+                        View Portfolio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="fade-in">
+                    <img src="resources/logo.png" alt="Lakshmi Printers" class="h-12 w-auto mb-4">
+                    <p class="text-gray-300 mb-4">
+                        Premium printing solutions for businesses and individuals in Medchal. Quality, reliability, and excellence in every print.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gold hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-gold transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Business Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Brochures</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Custom T-Shirts</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">ID Cards</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-gold transition-colors">Digital Printing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gold mt-1 mr-3"></i>
+                            <p class="text-gray-300 text-sm">12-93, Medchal Check-Post, Kistapur Road, Near NH-44, Medchal, Telangana 501401</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">+91 99999 99999</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gold mr-3"></i>
+                            <p class="text-gray-300 text-sm">info@lakshmiprinters.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Lakshmi Printers. All rights reserved. | 
+                    <span class="text-gold">Designed with ❤️ for quality printing</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Service filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter services
+                    serviceCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+        
+        // Order service function
+        function orderService(serviceType) {
+            // Store service type in localStorage or pass as URL parameter
+            localStorage.setItem('selectedService', serviceType);
+            window.location.href = 'contact.html';
+        }
+    </script>
+</body>
+</html>
